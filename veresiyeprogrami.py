@@ -1,140 +1,83 @@
-import random
-import time
-
-class kumanda():
-
-    def __init__(self,tv_durum = "kapalı",tv_ses = 0,kanal_listesi = ["trt"],kanal = "trt"):
-        self.tv_durum = tv_durum
-        self.tv_ses = tv_ses
-        self.kanal_listesi = kanal_listesi
-        self.kanal = kanal
+# ------------Veresiye Programı v1.0------------- #
+#SINIRLAR : 100 TL VERESİYEDEN SONRA %10 ZAMLI ÜRÜN SATIMI.
+#150 TL SON SINIR FAZLA ALIŞVERİŞ YAPILAMAZ.
 
 
-    def tv_ac(self):
-        if (self.tv_durum=="açık"):
-            print("tv zaten açık")
-        else:
-            print("tv açılıyor")
-            self.tv_durum = "açık"
+print("*ÜRÜNLER*")
+print("""-ÇİKOLATA
+-MEYVE SUYU
+-KEK
+-SÜT
+-PRİL
+""")
+print("-------------------")
 
 
-    def tv_kapat(self):
-        if(self.tv_durum=="kapalı"):
-            print("tv zaten kapalı")
-        else:
-            print("tv kapanıyor")
-            self.tv_durum = "kapalı"
+print("*KİŞİLER*")
+print("""-İbrahim
+-Şengül
+-Emine
+""")
 
+cikolata = 5
+meyve_suyu = 10
+kek = 5
+sut = 10
+pril = 20
+ibrahim = 0
+sengul = 0
+emine = 0
 
-    def ses_ayaları(self):
-
-
-        while True:
-            cevap = input("Sesi azalt : '<'\nSes arttır:'>'\nÇıkış:exit")
-
-
-            if cevap == "<":
-                if(self.tv_ses !=0):
-                    self.tv_ses -= 1
-                    print("ses:",self.tv_ses)
-            elif cevap == ">":
-                if(self.tv_ses!= 31):
-                    self.tv_ses += 1
-                    print("ses:",self.tv_ses)
-            else:
-                print("tv ses güncellendi:",self.tv_ses)
-                break
-
-
-    def kanal_ekle(self,kanal_isim):
-
-        print("kanal ekleniyor...")
-        time.sleep(1)
-
-
-        self.kanal_listesi.append(kanal_ismi)
-
-        print("kanal eklendi...")
-    def rastgele_kanal(self):
-        rastgele = random.randint(0,len(self.kanal_listesi)-1)
-        self.kanal = self.kanal_listesi[rastgele]
-        print("şuanki kanal:",self.kanal)
-
-
-    def __len__(self):
-        return len(self.kanal_listesi)
-
-
-    def __str__(self):
-        return "tv durumu: {}\ntv ses: {}\nkanal listesi: {}\nşuanki kanal: {}\n".format(self.tv_durum,self.tv_ses,self.kanal_listesi,self.kanal)
-
-kumanda = kumanda()
-
-print( """
-televizyon uygulaması
-
-
-1 - tv aç
-
-2 - tv kapat
-
-3 - ses ayarları
-
-4 - kanal ekle
-
-5 - kanal sayısı öğrenme 
-
-6 - rastgele kanala geçme
-
-7 - televizyon blgileri
-
-çıkmak için 'q' ya basın
-
-
-
-
-
-
-""" )
-
+urun_fiyat = [cikolata,meyve_suyu,kek,sut,pril]
+urun = ["Çikolata","Meyve Suyu","Kek","Süt","Pril"]
+kisiler = ["İbrahim","Şengül","Emine"]
+kisi_parasi = [ibrahim,sengul,emine]
 
 while True:
-    işlem = input("işlem seçiniz:")
-    if işlem == "q":
-        print("program sonlandırılıyor...")
+    islem1 = input("Borç Yazılacak Kişinin Adını Giriniz : ")
+    islem2 = input("Alınacak Ürünü Seçiniz : ")
+
+    if islem1 == "q":
         break
+    if islem1 == kisiler[0]:
+        if islem2 == urun[0]:
+            kisi_parasi[0] += urun_fiyat[0]
+        elif islem2 == urun[1]:
+            kisi_parasi[0] += urun_fiyat[1]
+        elif islem2 == urun[2]:
+            kisi_parasi[0] += urun_fiyat[2]
+        elif islem2 == urun[3]:
+            kisi_parasi[0] += urun_fiyat[3]
+        elif islem2 == urun[4]:
+            kisi_parasi[0] += urun_fiyat[4]
+    elif islem1 == kisiler[1]:
+        if islem2 == urun[0]:
+            kisi_parasi[1] += urun_fiyat[0]
+        elif islem2 == urun[1]:
+            kisi_parasi[1] += urun_fiyat[1]
+        elif islem2 == urun[2]:
+            kisi_parasi[1] += urun_fiyat[2]
+        elif islem2 == urun[3]:
+            kisi_parasi[1] += urun_fiyat[3]
+        elif islem2 == urun[4]:
+            kisi_parasi[1] += urun_fiyat[4]
+    elif islem1 == kisiler[2]:
+        if islem2 == urun[0]:
+            kisi_parasi[2] += urun_fiyat[0]
+        elif islem2 == urun[1]:
+            kisi_parasi[2] += urun_fiyat[1]
+        elif islem2 == urun[2]:
+            kisi_parasi[2] += urun_fiyat[2]
+        elif islem2 == urun[3]:
+            kisi_parasi[2] += urun_fiyat[3]
+        elif islem2 == urun[4]:
+            kisi_parasi[2] += urun_fiyat[4]
 
-    elif işlem == "1":
-        kumanda.tv_ac()
-    elif işlem == "2":
-        kumanda.tv_kapat()
-    elif işlem == "3":
-        kumanda.ses_ayaları()
-    elif işlem == "4":
-        kanal_ismi = input("kanal isimlerini ',' ile ayırarak söyleyin:")
-        kanal_listesi = kanal_ismi.split(",")
-
-
-        for eklenecekler in kanal_listesi:
-            kumanda.kanal_ekle(eklenecekler)
-
-    elif işlem == "5":
-        print("kanal sayısı:",len(kumanda))
-
-
-    elif işlem == "6":
-        kumanda.rastgele_kanal()
-
-
-    elif işlem == "7":
-        print(kumanda)
-
-
-    else:
-        print("geçersiz işlem...")
-
-
-
-
-
-
+for i in kisi_parasi:
+    if i >= 100 and i <= 150:
+        for x in urun_fiyat:
+            x = x + ((x*10)/100)
+        if i >= 150:
+            print("Lütfen Borcunuzu Ödedikten sonra Alışveriş Yapınız.")
+            i = 150
+print("İbrahim Borç : {}  Şengün Borç : {}  , Emine Borç : {}".format(kisi_parasi[0],kisi_parasi[1],kisi_parasi[2]))
